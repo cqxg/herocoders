@@ -1,0 +1,4 @@
+List of components without a component lead:
+- Component: Backend, Number of tasks: 13
+- Component: Synchronization, Number of tasks: 3
+- Component: Templates, Number of tasks: 11
