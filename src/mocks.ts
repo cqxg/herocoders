@@ -47,7 +47,7 @@ export const errorLetterStyles = `
 
 const randomElements = words.sort(() => Math.random() - 0.5).slice(0, 6);
 
-const shuffledWords = randomElements.map((word) =>
+const shuffledWords = randomElements.map((word: string) =>
   word.split("").sort(() => Math.random() - 0.5)
 );
 
