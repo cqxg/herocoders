@@ -1,18 +1,18 @@
 import { data } from "../mocks";
-import { ErrorsType } from "../types";
 import { COUNT_INITIAL_VAL } from "../constants";
+import { ErrorsType, StatisticElementType } from "../types";
 
-export const statisticsElements = () => {
+export const statisticsElements = (): StatisticElementType[] => {
   const elements = [];
   let wordsWithMaxErrors;
 
   const totalErrors = data.errors.reduce(
-    (total: number, entry: ErrorsType) => total + entry.errors,
+    (total: number, entry: ErrorsType): number => total + entry.errors,
     COUNT_INITIAL_VAL
   );
 
   const wordsWithoutErrors = data.errors.filter(
-    (entry: ErrorsType) => entry.errors === COUNT_INITIAL_VAL
+    (entry: ErrorsType): boolean => entry.errors === COUNT_INITIAL_VAL
   ).length;
 
   elements.push({ tagName: "h2", textContent: "Statistic:" });
@@ -34,13 +34,13 @@ export const statisticsElements = () => {
   });
 
   const maxErrors = Math.max(
-    ...data.errors.map((entry: ErrorsType) => entry.errors)
+    ...data.errors.map((entry: ErrorsType): number => entry.errors)
   );
 
   if (maxErrors > COUNT_INITIAL_VAL) {
     wordsWithMaxErrors = data.errors
-      .filter((entry: ErrorsType) => entry.errors === maxErrors)
-      .map((entry: ErrorsType) => entry.word)
+      .filter((entry: ErrorsType): boolean => entry.errors === maxErrors)
+      .map((entry: ErrorsType): string => entry.word)
       .join(", ");
   } else {
     wordsWithMaxErrors = "You didn't make any mistakes!";

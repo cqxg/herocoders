@@ -2,10 +2,10 @@ import { data } from "../mocks";
 import { ErrorsType } from "../types";
 import { COUNTER_UNIT, COUNT_INITIAL_VAL } from "../constants";
 
-export const errorsCounter = (targetWord: string) => {
+export const errorsCounter = (targetWord: string): void => {
   let found = false;
 
-  data.errors.forEach((item: ErrorsType) => {
+  data.errors.forEach((item: ErrorsType): void => {
     if (item.word === targetWord) {
       item.errors += COUNTER_UNIT;
       found = true;
@@ -22,6 +22,8 @@ export const hasReachedErrorLimit = (
   errors: ErrorsType[],
   errorLimit: number
 ): boolean => {
-  const wordEntry = errors.find((entry: ErrorsType) => entry.word === word);
+  const wordEntry = errors.find(
+    (entry: ErrorsType): boolean => entry.word === word
+  );
   return wordEntry?.errors === errorLimit - COUNTER_UNIT;
 };

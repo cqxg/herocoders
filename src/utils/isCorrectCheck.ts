@@ -10,10 +10,10 @@ import { answerLetterStyles, data } from "../mocks";
 import { renderShuffledWords } from "./renderShuffledWords";
 import { errorsCounter, hasReachedErrorLimit } from "./errorsCounter";
 
-export const isCorrectCheck = (e: MouseEvent, symbol: string) => {
+export const isCorrectCheck = (e: MouseEvent, symbol: string): void => {
   const currentTarget = e.target as HTMLElement;
   const isSymbolCorrect = Array.from(symbol).every(
-    (char: string, index: number) => char === data.currentWord[index]
+    (char: string, index: number): boolean => char === data.currentWord[index]
   );
 
   if (isSymbolCorrect) {
@@ -44,7 +44,7 @@ export const isCorrectCheck = (e: MouseEvent, symbol: string) => {
 
     let found = false;
 
-    data.errors.forEach((item: ErrorsType) => {
+    data.errors.forEach((item: ErrorsType): void => {
       if (item.word === data.auxiliaryWord) {
         item.errors += COUNTER_UNIT;
         found = true;

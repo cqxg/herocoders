@@ -8,18 +8,18 @@ import {
   CURRENT_QUESTION,
 } from "../constants";
 
-export const renderShuffledWords = () => {
+export const renderShuffledWords = (): void => {
   if (data.currentWordIndex === TASKS_NUMBER) {
     statistic();
     return;
   }
 
-  data.shuffledWords.forEach((words: string[], index: number) => {
+  data.shuffledWords.forEach((words: string[], index: number): void => {
     if (data.currentWordIndex === index) {
       data.currentWord = data.randomElements[index];
       data.auxiliaryWord = data.randomElements[index];
 
-      words.forEach((symbol: string) => letter(symbol));
+      words.forEach((symbol: string): void => letter(symbol));
     }
   });
 

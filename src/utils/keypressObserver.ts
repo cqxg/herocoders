@@ -10,7 +10,7 @@ import {
 
 let isProcessing = false;
 
-export const keypressObserver = (e: KeyboardEvent) => {
+export const keypressObserver = (e: KeyboardEvent): void => {
   if (isProcessing) {
     return;
   }
@@ -42,7 +42,7 @@ export const keypressObserver = (e: KeyboardEvent) => {
       errorsCounter(data.auxiliaryWord);
       if (hasReachedErrorLimit(data.auxiliaryWord, data.errors, ERRORS_LIMIT)) {
         showCorrectWord();
-        setTimeout(() => (isProcessing = false), PROCESSING_TIMEOUT);
+        setTimeout((): boolean => (isProcessing = false), PROCESSING_TIMEOUT);
       } else {
         isProcessing = false;
       }

@@ -2,7 +2,7 @@ import { LETTERS } from "../constants";
 import { proposedLetterStyles } from "../mocks";
 import { isCorrectCheck } from "../utils/isCorrectCheck";
 
-export const letter = (symbol: string) => {
+export const letter = (symbol: string): void => {
   const letterElement = document.createElement("div");
 
   letterElement.id = "letter";
@@ -11,14 +11,13 @@ export const letter = (symbol: string) => {
 
   LETTERS?.appendChild(letterElement);
 
-  letterElement.addEventListener("click", (e: MouseEvent) =>
+  letterElement.addEventListener("click", (e: MouseEvent): void =>
     isCorrectCheck(e, symbol)
   );
-  letterElement.addEventListener(
-    "mouseenter",
-    () => (letterElement.style.background = "#005ec3")
-  );
-  letterElement.addEventListener("mouseleave", () => {
+  letterElement.addEventListener("mouseenter", (): void => {
+    letterElement.style.background = "#005ec3";
+  });
+  letterElement.addEventListener("mouseleave", (): void => {
     letterElement.style.background = "#007bff";
     letterElement.style.boxShadow = "";
   });

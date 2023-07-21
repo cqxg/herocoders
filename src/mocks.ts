@@ -45,10 +45,12 @@ export const errorLetterStyles = `
   box-shadow: 0px 0px 2px 4px #dc8499;
 `;
 
-const randomElements = words.sort(() => Math.random() - 0.5).slice(0, 6);
+const randomElements = words
+  .sort((): number => Math.random() - 0.5)
+  .slice(0, 6);
 
-const shuffledWords = randomElements.map((word: string) =>
-  word.split("").sort(() => Math.random() - 0.5)
+const shuffledWords = randomElements.map((word: string): string[] =>
+  word.split("").sort((): number => Math.random() - 0.5)
 );
 
 export const data: DataType = {

@@ -9,12 +9,12 @@ import {
   COUNT_INITIAL_VAL,
 } from "../constants";
 
-export const showCorrectWord = () => {
+export const showCorrectWord = (): void => {
   while (LETTERS?.firstChild) {
     LETTERS?.removeChild(LETTERS?.firstChild);
   }
 
-  data.auxiliaryWord.split("").forEach((symbol: string) => {
+  data.auxiliaryWord.split("").forEach((symbol: string): void => {
     letter(symbol);
   });
 
@@ -25,7 +25,7 @@ export const showCorrectWord = () => {
     }
   }
 
-  setTimeout(() => {
+  setTimeout((): void => {
     data.currentWordIndex = data.currentWordIndex + COUNTER_UNIT;
 
     while (ANSWER?.firstChild) {
