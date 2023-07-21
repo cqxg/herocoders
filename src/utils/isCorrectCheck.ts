@@ -46,7 +46,6 @@ export const isCorrectCheck = (e: MouseEvent, symbol: string): void => {
 
     data.errors.forEach((item: ErrorsType): void => {
       if (item.word === data.auxiliaryWord) {
-        item.errors += COUNTER_UNIT;
         found = true;
       }
     });

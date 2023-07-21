@@ -19,7 +19,9 @@ export const renderShuffledWords = (): void => {
       data.currentWord = data.randomElements[index];
       data.auxiliaryWord = data.randomElements[index];
 
-      words.forEach((symbol: string): void => letter(symbol));
+      words.forEach((symbol: string): void => {
+        letter(symbol);
+      });
     }
   });
 
