@@ -12,5 +12,4 @@ export const ERRORS_LIMIT = 3;
 export const COUNTER_UNIT = 1;
 export const TASKS_NUMBER = 6;
 export const COUNT_INITIAL_VAL = 0;
-export const PROCESSING_TIMEOUT = 1800;
-export const COMMON_TIMEOUT = 1500;
+export const PROCESSING_TIMEOUT = 700;

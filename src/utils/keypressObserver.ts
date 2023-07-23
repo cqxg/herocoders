@@ -1,28 +1,10 @@
 import { data } from "../mocks";
+import { isCorrectCheck } from "./isCorrectCheck";
 import { showCorrectWord } from "./showCorrectWord";
 import { errorsCounter, hasReachedErrorLimit } from "./errorsCounter";
-import {
-  LETTERS,
-  ERRORS_LIMIT,
-  COUNT_INITIAL_VAL,
-  PROCESSING_TIMEOUT,
-} from "../constants";
-
-let isProcessing = false;
+import { LETTERS, ERRORS_LIMIT, COUNT_INITIAL_VAL } from "../constants";
 
 export const keypressObserver = (e: KeyboardEvent): void => {
-  if (isProcessing) {
-    return;
-  }
-
-  isProcessing = true;
-
-  const clickEvent = new MouseEvent("click", {
-    bubbles: true,
-    cancelable: true,
-    view: window,
-  });
-
   if (LETTERS) {
     let matchedElement = null;
 
@@ -36,15 +18,11 @@ export const keypressObserver = (e: KeyboardEvent): void => {
     }
 
     if (matchedElement) {
-      matchedElement?.dispatchEvent(clickEvent);
-      isProcessing = false;
+      isCorrectCheck(matchedElement as HTMLElement, e.key);
     } else {
       errorsCounter(data.auxiliaryWord);
       if (hasReachedErrorLimit(data.auxiliaryWord, data.errors, ERRORS_LIMIT)) {
         showCorrectWord();
-        setTimeout((): boolean => (isProcessing = false), PROCESSING_TIMEOUT);
-      } else {
-        isProcessing = false;
       }
     }
   }

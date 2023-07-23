@@ -1,12 +1,13 @@
 import { letter } from "../components/letter";
 import { data, errorLetterStyles } from "../mocks";
+import { keypressObserver } from "./keypressObserver";
 import { renderShuffledWords } from "./renderShuffledWords";
 import {
   ANSWER,
   LETTERS,
   COUNTER_UNIT,
-  COMMON_TIMEOUT,
   COUNT_INITIAL_VAL,
+  PROCESSING_TIMEOUT,
 } from "../constants";
 
 export const showCorrectWord = (): void => {
@@ -25,6 +26,8 @@ export const showCorrectWord = (): void => {
     }
   }
 
+  document.removeEventListener("keyup", keypressObserver);
+
   setTimeout((): void => {
     data.currentWordIndex = data.currentWordIndex + COUNTER_UNIT;
 
@@ -35,5 +38,7 @@ export const showCorrectWord = (): void => {
       LETTERS?.removeChild(LETTERS?.firstChild);
     }
     renderShuffledWords();
-  }, COMMON_TIMEOUT);
+
+    document.addEventListener("keyup", keypressObserver);
+  }, PROCESSING_TIMEOUT);
 };

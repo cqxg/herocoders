@@ -3,15 +3,19 @@ import {
   COUNTER_UNIT,
   ERRORS_LIMIT,
   COUNT_INITIAL_VAL,
+  PROCESSING_TIMEOUT,
 } from "../constants";
 import { ErrorsType } from "../types";
 import { showCorrectWord } from "./showCorrectWord";
 import { answerLetterStyles, data } from "../mocks";
+import { keypressObserver } from "./keypressObserver";
 import { renderShuffledWords } from "./renderShuffledWords";
 import { errorsCounter, hasReachedErrorLimit } from "./errorsCounter";
 
-export const isCorrectCheck = (e: MouseEvent, symbol: string): void => {
-  const currentTarget = e.target as HTMLElement;
+export const isCorrectCheck = (
+  currentTarget: HTMLElement,
+  symbol: string
+): void => {
   const isSymbolCorrect = Array.from(symbol).every(
     (char: string, index: number): boolean => char === data.currentWord[index]
   );
@@ -29,6 +33,13 @@ export const isCorrectCheck = (e: MouseEvent, symbol: string): void => {
     errorsCounter(data.auxiliaryWord);
     currentTarget.style.background = "#a10e2c";
     currentTarget.style.boxShadow = "0px 0px 2px 4px #dc8499";
+    document.removeEventListener("keyup", keypressObserver);
+
+    setTimeout(() => {
+      currentTarget.style.background = "#007bff";
+      currentTarget.style.boxShadow = "none";
+      document.addEventListener("keyup", keypressObserver);
+    }, PROCESSING_TIMEOUT);
 
     if (hasReachedErrorLimit(data.auxiliaryWord, data.errors, ERRORS_LIMIT)) {
       showCorrectWord();

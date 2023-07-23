@@ -12,7 +12,7 @@ export const letter = (symbol: string): void => {
   LETTERS?.appendChild(letterElement);
 
   letterElement.addEventListener("click", (e: MouseEvent): void =>
-    isCorrectCheck(e, symbol)
+    isCorrectCheck(e.target as HTMLElement, symbol)
   );
   letterElement.addEventListener("mouseenter", (): void => {
     letterElement.style.background = "#005ec3";
