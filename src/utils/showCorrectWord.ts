@@ -1,7 +1,3 @@
-import { letter } from "../components/letter";
-import { data, errorLetterStyles } from "../mocks";
-import { keypressObserver } from "./keypressObserver";
-import { renderShuffledWords } from "./renderShuffledWords";
 import {
   ANSWER,
   LETTERS,
@@ -9,6 +5,12 @@ import {
   COUNT_INITIAL_VAL,
   PROCESSING_TIMEOUT,
 } from "../constants";
+import { data, errorLetterStyles } from "../mocks";
+
+import { letter } from "../components/letter";
+
+import { keypressObserver } from "./keypressObserver";
+import { renderShuffledWords } from "./renderShuffledWords";
 
 export const showCorrectWord = (): void => {
   while (LETTERS?.firstChild) {

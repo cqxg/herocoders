@@ -12,7 +12,7 @@ export type DataType = {
   randomElements: string[];
 };
 
-export type StatisticElementType = {
+export type ElementType = {
   tagName: string;
   textContent: string;
 };

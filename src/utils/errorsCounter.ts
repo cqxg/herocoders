@@ -1,6 +1,6 @@
 import { data } from "../mocks";
 import { ErrorsType } from "../types";
-import { COUNTER_UNIT, COUNT_INITIAL_VAL, ERRORS_LIMIT } from "../constants";
+import { COUNTER_UNIT, ERRORS_LIMIT } from "../constants";
 
 export const errorsCounter = (targetWord: string): void => {
   let found = false;

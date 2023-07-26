@@ -1,8 +1,8 @@
 import { data } from "../mocks";
 import { COUNT_INITIAL_VAL } from "../constants";
-import { ErrorsType, StatisticElementType } from "../types";
+import { ErrorsType, ElementType } from "../types";
 
-export const statisticsElements = (): StatisticElementType[] => {
+export const statisticsElements = (): ElementType[] => {
   const elements = [];
   let wordsWithMaxErrors;
 

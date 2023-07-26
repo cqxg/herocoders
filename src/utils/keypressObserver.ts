@@ -1,8 +1,9 @@
 import { data } from "../mocks";
+import { LETTERS, ERRORS_LIMIT, COUNT_INITIAL_VAL } from "../constants";
+
 import { isCorrectCheck } from "./isCorrectCheck";
 import { showCorrectWord } from "./showCorrectWord";
 import { errorsCounter, hasReachedErrorLimit } from "./errorsCounter";
-import { LETTERS, ERRORS_LIMIT, COUNT_INITIAL_VAL } from "../constants";
 
 export const keypressObserver = (e: KeyboardEvent): void => {
   if (LETTERS) {

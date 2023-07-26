@@ -1,12 +1,13 @@
-import { data } from "../mocks";
-import { letter } from "../components/letter";
-import { statistic } from "../components/statistic";
 import {
   COUNTER_UNIT,
   TASKS_NUMBER,
   TOTAL_QUESTIONS,
   CURRENT_QUESTION,
 } from "../constants";
+import { data } from "../mocks";
+
+import { letter } from "../components/letter";
+import { statistic } from "../components/statistic";
 
 export const renderShuffledWords = (): void => {
   if (data.currentWordIndex === TASKS_NUMBER) {

@@ -1,5 +1,6 @@
 import { LETTERS } from "../constants";
 import { proposedLetterStyles } from "../mocks";
+
 import { isCorrectCheck } from "../utils/isCorrectCheck";
 
 export const letter = (symbol: string): void => {
